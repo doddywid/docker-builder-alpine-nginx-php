@@ -1,5 +1,8 @@
 FROM alpine:3.20
 
+# Setup document root
+WORKDIR /var/www/html
+
 # Install packages and remove default server definition
 RUN apk add --no-cache \
   tzdata \
@@ -43,7 +46,7 @@ COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chown -R nobody.nobody /var/www/html /run /var/lib/nginx /var/log/nginx
 
 # Create symlink for php
-RUN ln -s /usr/bin/php83 /usr/bin/php
+#RUN ln -s /usr/bin/php83 /usr/bin/php
 
 # Switch to use a non-root user from here on
 USER nobody
@@ -58,4 +61,4 @@ EXPOSE 80
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 
 # Configure a healthcheck to validate that everything is up&running
-HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1:8080/fpm-ping || exit 1
+HEALTHCHECK --timeout=10s CMD curl --silent --fail http://127.0.0.1/fpm-ping || exit 1
