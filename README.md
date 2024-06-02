@@ -2,9 +2,9 @@
 
 This repository is based on https://github.com/TrafeX/docker-php-nginx.
 It is a docker image builder using
-- Alpine 3.20 : small footprint
-- Nginx Open Source : high performance web server
-- PHP-FPM : running php
+- Alpine 3.20: small footprint
+- Nginx Open Source: high performance web server
+- PHP-FPM: running php
 
 \
 How to use
