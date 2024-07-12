@@ -9,4 +9,5 @@ It is a docker image builder using
 \
 How to use
 - Put website asset inside "src/" folder. The folder must be on the same folder with Dockerfile
-- Run "docker build" command.
+- Run "docker build" command
+- Docker image is listening at port 8080.
